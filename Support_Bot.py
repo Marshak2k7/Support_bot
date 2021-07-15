@@ -20,7 +20,7 @@ def start_ticket_info_collection(chat_id):
 
 today_date = dt.datetime.today().strftime('%Y.%m.%d %H:%M')
 
-access_token = '1862714973:AAGwGQFpFeiV3SIRLvws7sPY_n2lzBK6s1U'
+access_token = '{Your_token}'
 
 bot = telebot.TeleBot(access_token)
 
@@ -67,7 +67,7 @@ def get_api(message):
     user_dict[chat_id] = user
 
     try:
-        a = API('newaccount1624950159366.freshdesk.com', user.api)
+        a = API('{your_company}.freshdesk.com', user.api)
         a.tickets.list_tickets()
 
         user.is_auth = True
@@ -102,14 +102,13 @@ def get_email(message):
         email = message.text
 
         if email == '/skip':
-            email = 'telegram@visiology.su'
+            email = 'skip@gmail.com'
 
         ticket = Ticket(email)
         ticket_dict[chat_id] = ticket
 
         bot.send_message(message.from_user.id, 'Введите описание тикета, а затем выполните команду /stop')
 
-        # bot.register_next_step_handler(message, get_description)
         start_ticket_info_collection(chat_id)
     except:
         bot.reply_to(message, 'Почта введена неверно')
@@ -136,7 +135,7 @@ def save_ticket_info(chat_id, ticket_info_text):
 
     ticket.description = ticket_info_text
     try:
-        a = API('newaccount1624950159366.freshdesk.com', user.api)
+        a = API('{your_company}.freshdesk.com', user.api)
         _ = ticket.create_ticket(a)
         bot.send_message(chat_id, 'Тикет создан удачно')
     except Exception:
