@@ -1,5 +1,5 @@
-## Description
-# Support_bot
+# Description
+## Support_bot
 Technical support bot that allows to create tickets in https://freshdesk.com/ via telegram
 
 Firslty you need to install package manager [pip](https://pip.pypa.io/en/stable/) and then use 
