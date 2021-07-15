@@ -102,7 +102,7 @@ def get_email(message):
         email = message.text
 
         if email == '/skip':
-            email = 'skip@gmail.com'
+            email = 'telegram@visiology.su'
 
         ticket = Ticket(email)
         ticket_dict[chat_id] = ticket
@@ -128,7 +128,6 @@ def process_message(message):
 
 
 def save_ticket_info(chat_id, ticket_info_text):
-    bot.send_message(chat_id, ticket_info_text)
 
     user = user_dict[chat_id]
     ticket = ticket_dict[chat_id]
